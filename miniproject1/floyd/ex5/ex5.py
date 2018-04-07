@@ -99,11 +99,11 @@ class AppendedHistory:
 
 #--------------------
 
-dens_list = [[100], [78, 73], [66, 66, 67], [59, 59, 59, 59]]
+dens_list = [[78, 73], [66, 66, 67], [59, 59, 59, 59]]
 
-for denss in [dens_list[1]]:
+for denss in dens_list:
     apphist_layers = AppendedHistory(varname='weights')
-    for j in range(10):
+    for j in range(33):
         start_time = timeit.default_timer()
         equal_n_params = Sequential()
         equal_n_params.add(Dense(denss[0], input_dim=x_train.shape[1], activation='relu'))
@@ -112,7 +112,7 @@ for denss in [dens_list[1]]:
                 equal_n_params.add(Dense(dens, activation='relu'))
         equal_n_params.add(Dense(5, input_dim=x_train.shape[1], activation='softmax'))
         equal_n_params.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['acc'])
-        hist_equal_n_params = equal_n_params.fit(x_train, y_train, epochs=100, batch_size=128, \
+        hist_equal_n_params = equal_n_params.fit(x_train, y_train, epochs=50, batch_size=128, \
                                         verbose=2, validation_data=(x_test, y_test))
         apphist_layers.append_hist(j, hist_equal_n_params)
         elapsed = timeit.default_timer() - start_time
