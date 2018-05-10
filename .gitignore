@@ -1,3 +1,5 @@
 miniproject*/.ipynb_checkpoints/
 miniproject1/housenumbers/
 miniproject2/chorpus/
+miniproject2/data/P_matrix.npy
+miniproject2/data/T_matrix.npy
